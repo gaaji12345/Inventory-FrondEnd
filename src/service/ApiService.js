@@ -3,7 +3,7 @@ import CryptoJS from "crypto-js";
 
 export default class ApiService {
 
-    static BASE_URL = "http://localhost:8080/api/v3/";
+    static BASE_URL = "http://localhost:8080/api/v3";
     static ENCRYPTION_KEY = "phegon-dev-inventory";
 
 
@@ -168,35 +168,35 @@ export default class ApiService {
 
     /**CATEGOTY EDNPOINTS */
     static async createCategory(category) {
-        const response = await axios.post(`${this.BASE_URL}/categories/add`, category, {
+        const response = await axios.post(`${this.BASE_URL}/category/add`, category, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async getAllCategory() {
-        const response = await axios.get(`${this.BASE_URL}/categories/all`, {
+        const response = await axios.get(`${this.BASE_URL}/category/all`, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async getCategoryById(categoryId) {
-        const response = await axios.get(`${this.BASE_URL}/categories/${categoryId}`, {
+        const response = await axios.get(`${this.BASE_URL}/category/${categoryId}`, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async updateCategory(categoryId, categoryData) {
-        const response = await axios.put(`${this.BASE_URL}/categories/update/${categoryId}`, categoryData, {
+        const response = await axios.put(`${this.BASE_URL}/category/update/${categoryId}`, categoryData, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async deleteCategory(categoryId) {
-        const response = await axios.delete(`${this.BASE_URL}/categories/delete/${categoryId}`, {
+        const response = await axios.delete(`${this.BASE_URL}/category/delete/${categoryId}`, {
             headers: this.getHeader()
         })
         return response.data;
@@ -205,14 +205,14 @@ export default class ApiService {
 
     /**Supplier EDNPOINTS */
     static async addSupplier(supplierData) {
-        const response = await axios.post(`${this.BASE_URL}/suppliers/add`, supplierData, {
+        const response = await axios.post(`${this.BASE_URL}/supplier/add`, supplierData, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async getAllSuppliers() {
-        const response = await axios.get(`${this.BASE_URL}/suppliers/all`, {
+        const response = await axios.get(`${this.BASE_URL}/supplier/all`, {
             headers: this.getHeader()
         })
         return response.data;
@@ -220,21 +220,21 @@ export default class ApiService {
 
 
     static async getSupplierById(supplierId) {
-        const response = await axios.get(`${this.BASE_URL}/suppliers/${supplierId}`, {
+        const response = await axios.get(`${this.BASE_URL}/supplier/${supplierId}`, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async updateSupplier(supplierId, supplierData) {
-        const response = await axios.put(`${this.BASE_URL}/suppliers/update/${supplierId}`, supplierData, {
+        const response = await axios.put(`${this.BASE_URL}/supplier/update/${supplierId}`, supplierData, {
             headers: this.getHeader()
         })
         return response.data;
     }
 
     static async deleteSupplier(supplierId) {
-        const response = await axios.delete(`${this.BASE_URL}/suppliers/delete/${supplierId}`, {
+        const response = await axios.delete(`${this.BASE_URL}/supplier/delete/${supplierId}`, {
             headers: this.getHeader()
         })
         return response.data;

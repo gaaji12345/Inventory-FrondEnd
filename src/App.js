@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import CategoryPage from "./pages/CategoryPage";
+import { ProtectedRoute, AdminRoute } from "./service/Guard";
+import SupplierPage from "./pages/SupplierPage";
+import AddEditSupplierPage from "./pages/AddEditSupplierPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+
+                {/* Admin protected route for Category Page */}
+                <Route path="/category" element={<AdminRoute element={<CategoryPage />} />} />
+                <Route path="/supplier" element={<AdminRoute element={<SupplierPage />} />} />
+                <Route path="/add-supplier" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
+                <Route path="/edit-supplier/:supplierId" element={<AdminRoute element={<AddEditSupplierPage/>}/>}/>
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
